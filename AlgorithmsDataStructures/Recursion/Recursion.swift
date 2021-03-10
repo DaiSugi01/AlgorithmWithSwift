@@ -69,15 +69,14 @@ func evaluate(_ formula: String) -> Int {
     return Int(formula)!
   }
   
-  let lastParenciesIndex = trimedFormula.lastIndex(of: "(")!
-
-  var partString = (trimedFormula[trimedFormula.index(lastParenciesIndex, offsetBy: 1)...])
-  let index = partString.firstIndex(of: ")")!
-  partString = partString[partString.startIndex..<index]
+  let openingBracketIndex = trimedFormula.lastIndex(of: "(")!
+  var extractString = (trimedFormula[trimedFormula.index(openingBracketIndex, offsetBy: 1)...])
+  let closingBracketIndex = extractString.firstIndex(of: ")")!
+  extractString = extractString[extractString.startIndex..<closingBracketIndex]
   
-  let expression = NSExpression(format: String(partString))
+  let expression = NSExpression(format: String(extractString))
   if let result = expression.expressionValue(with: nil, context: nil) as? NSNumber {
-    if let range = formula.range(of: "(" + partString + ")") {
+    if let range = formula.range(of: "(\(extractString))") {
       trimedFormula.replaceSubrange(range, with: "\(result)")
     }
   }
