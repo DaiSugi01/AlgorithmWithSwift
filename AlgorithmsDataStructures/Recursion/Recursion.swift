@@ -48,7 +48,7 @@ func printBinary(num: Int) {
 // 4. reverseLines
 // print all lines in reverse order (recursively) from a atext file
 func reverseLines(_ line: Int) {
-  let contents = try! String(contentsOfFile: "/Users/DKS/Downloads/provinces.txt", encoding: .utf8)
+  let contents = try! String(contentsOfFile: "/Users/DKS/projects/Cornerstone/4_Swift/401/AlgorithmsDataStructures/AlgorithmsDataStructures/Recursion/Resources/provinces.txt", encoding: .utf8)
   let lines = contents.split(separator: "\n")
   
   if line > lines.count - 1 {
@@ -59,27 +59,4 @@ func reverseLines(_ line: Int) {
   
   print(lines[line])
 
-}
-
-
-func evaluate(_ formula: String) -> Int {
-  var trimedFormula = formula.trimmingCharacters(in: .whitespaces)
-  
-  if !formula.contains("(") {
-    return Int(formula)!
-  }
-  
-  let openingBracketIndex = trimedFormula.lastIndex(of: "(")!
-  var extractString = (trimedFormula[trimedFormula.index(openingBracketIndex, offsetBy: 1)...])
-  let closingBracketIndex = extractString.firstIndex(of: ")")!
-  extractString = extractString[extractString.startIndex..<closingBracketIndex]
-  
-  let expression = NSExpression(format: String(extractString))
-  if let result = expression.expressionValue(with: nil, context: nil) as? NSNumber {
-    if let range = formula.range(of: "(\(extractString))") {
-      trimedFormula.replaceSubrange(range, with: "\(result)")
-    }
-  }
-  
-  return evaluate(trimedFormula)
 }
