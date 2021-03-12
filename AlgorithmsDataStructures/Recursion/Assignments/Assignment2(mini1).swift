@@ -6,18 +6,44 @@
 //
 
 import Foundation
-//  1. to print all directories and files in your file system (current location).
-//let fileManager = FileManager.default
-//// - get the current location (path)
-//// -
-//
-//fileManager.contentsOfDirectory(at: URL(string: fileManager.currentDirectoryPath),
-//                                includingPropertiesForKeys: <#T##[URLResourceKey]?#>,
-//                                options: <#T##FileManager.DirectoryEnumerationOptions#>)
 
-var count = 0
+struct Symbol {
+  static let indent = "   "
+  static let verticalBar = "│"
+  static let cornerBar = "└── "
+  static let horizontalBar = "── "
+}
 
-func crawl() -> Void {
-  let fileManager = FileManager.default
-  print(fileManager.currentDirectoryPath)
+var fileCount = 0
+var directoryCount = 0
+let fileManager = FileManager.default
+
+func crawl() {
+  let filePath = fileManager.currentDirectoryPath
+  let slashLastIndex = filePath.lastIndex(of: "/")!
+  let fileName = "\(filePath[filePath.index(slashLastIndex, offsetBy: 1)...])"
+
+  crawlHelper(filePath: filePath, fileName: fileName, soFarIndent: "")
+  
+  print("\n😽😽😽 \(directoryCount) directories, \(fileCount) files 😽😽😽")
+}
+
+func crawlHelper(filePath: String, fileName: String = "", soFarIndent: String, isLastFile: Bool = true ) {
+  guard let contents = try? fileManager.contentsOfDirectory(atPath: filePath) else {
+    fileCount += 1
+    print("\(soFarIndent)\(isLastFile ? Symbol.cornerBar : Symbol.horizontalBar)\(fileName)")
+    return
+  }
+
+  print("\(soFarIndent)\(isLastFile ? Symbol.cornerBar : Symbol.horizontalBar)\(fileName)")
+  directoryCount += 1
+
+  for content in contents {
+    let isLast = (content == contents.last)
+    let bar = isLast ? "" : Symbol.verticalBar
+    crawlHelper(filePath: "\(filePath)/\(content)",
+                  fileName: content,
+                  soFarIndent: soFarIndent + Symbol.indent + bar,
+                  isLastFile: isLast)
+  }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 /*
  * 1641. Count Sorted Vowel Strings
- *
+ * https://leetcode.com/problems/count-sorted-vowel-strings/
  * Given an integer n, return the number of strings of length n that consist only of vowels (a, e, i, o, u) and are lexicographically sorted.
  * A string s is lexicographically sorted if for all valid i, s[i] is the same as or comes before s[i+1] in the alphabet.
  *
@@ -39,7 +39,7 @@ func countVowelStringsHelper(_ n: Int, _ soFar: String = "", _ set: inout Set<St
       print(soFar)
     }
   } else {
-    for i in 0 ... vowels.count - 1 {
+    for i in 0 ..< vowels.count {
       _ = countVowelStringsHelper(n - 1, soFar + vowels[i], &set)
     }
   }
