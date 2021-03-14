@@ -19,7 +19,7 @@ import Foundation
 //printDecimal(2)
 //permutation("par")
 //printBinaryExhaustiveHelper(2)
-//combinations("google", n: 3)
+//combinations("AB", n: 1)
 //rollDice(2)
 //rollDiceSum(n: 2, desiredSum: 5)
 
@@ -27,6 +27,10 @@ import Foundation
 //print("*************************")
 //rollDiceSum(n: 3, desiredSum: 5)
 
-crawl()
+//crawl()
 
 //print(countVowelStrings(2))
+
+var arr = [1, 8, 3, 9, 4, 5, 7]
+//var arr = [1]
+print(quickSort(&arr, <))

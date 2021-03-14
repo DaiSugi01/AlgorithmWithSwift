@@ -89,23 +89,23 @@ func permutationUnique(_ word: String, _ soFar: String = "", _ set: inout Set<St
 }
 
 
-func combinationsHelper(_ word: String, _ n: Int, _ soFar: String = "", _ set: inout Set<String>) {
-  if word.count == 0 {
-    set.insert(soFar)
-  } else {
-    for i in 0..<word.count {
-      let c = word[i]
-      combinationsHelper(word[0, 1] + word[i+1, 2], n - 1, soFar + c, &set)
-    }
-  }
-}
-
-
 func combinations(_ word: String, n: Int) {
   var set = Set<String>()
   combinationsHelper(word, n, "", &set)
   for w in set {
     print(w)
+  }
+}
+
+func combinationsHelper(_ word: String, _ n: Int, _ soFar: String = "", _ set: inout Set<String>) {
+  if n == 0 {
+    set.insert(String(soFar))
+  } else {
+    for i in 0..<word.count {
+      let c = word[i]
+//      print(word[0, i] + word[i+1, word.count])
+      combinationsHelper(word[0, i] + word[i+1, word.count], n - 1, soFar + c, &set)
+    }
   }
 }
 
