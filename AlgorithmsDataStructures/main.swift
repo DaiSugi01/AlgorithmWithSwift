@@ -53,3 +53,19 @@ solveQueens(board: &board)
 //}
 //
 //print(bag)
+
+let stack = Stack<Int>()
+print(stack.pop())
+
+stack.push(item: 1)
+stack.push(item: 3)
+stack.push(item: 5)
+stack.push(item: 2)
+
+//print(stack.pop())
+//print(stack.peek())
+//print(stack.pop())
+//print(stack.peek())
+//print(stack.pop())
+//print(stack.pop())
+//print(stack.pop())

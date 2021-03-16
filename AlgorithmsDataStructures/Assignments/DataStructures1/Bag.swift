@@ -19,8 +19,6 @@ import Foundation
 public final class Bag<E> : Sequence  {
   
   private var first: Node<E>? = nil
-  
-  
   private(set) var count: Int = 0
   
   fileprivate class Node<E> {
