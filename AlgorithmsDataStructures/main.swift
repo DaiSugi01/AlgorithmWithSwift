@@ -33,4 +33,23 @@ import Foundation
 
 var arr = [1, 8, 3, 9, 4, 5, 7]
 //var arr = [1]
-print(quickSort(&arr, <))
+//print(quickSort(&arr, <))
+
+var board = Board(size: 8)
+solveQueens(board: &board)
+
+
+//let bag = Bag<Int>()
+//
+//bag.add(item: 10)
+//bag.add(item: 1)
+//bag.add(item: 10)
+//bag.add(item: 10)
+//bag.add(item: 5)
+//bag.add(item: 6)
+//
+//for item in bag {
+//  print(item)
+//}
+//
+//print(bag)
