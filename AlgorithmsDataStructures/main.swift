@@ -35,8 +35,8 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //var arr = [1]
 //print(quickSort(&arr, <))
 
-var board = Board(size: 8)
-solveQueens(board: &board)
+//var board = Board(size: 8)
+//solveQueens(board: &board)
 
 
 //let bag = Bag<Int>()
@@ -54,18 +54,34 @@ solveQueens(board: &board)
 //
 //print(bag)
 
-let stack = Stack<Int>()
-print(stack.pop())
+//let stack = Stack<Int>()
+//print(stack.pop())
+//
+//stack.push(item: 1)
+//stack.push(item: 3)
+//stack.push(item: 5)
+//stack.push(item: 2)
+//
+//print(stack)
+//for item in stack {
+//  print(item)
+//}
+//print(stack.pop())
+//print(stack.pop())
+//print(stack)
 
-stack.push(item: 1)
-stack.push(item: 3)
-stack.push(item: 5)
-stack.push(item: 2)
-
-//print(stack.pop())
-//print(stack.peek())
-//print(stack.pop())
-//print(stack.peek())
-//print(stack.pop())
-//print(stack.pop())
-//print(stack.pop())
+//let queue = Queue<Int>()
+//queue.enqueue(item: 1)
+//queue.enqueue(item: 2)
+//queue.enqueue(item: 3)
+//queue.enqueue(item: 4)
+//queue.enqueue(item: 5)
+//
+//print(queue.dequeue())
+//print(queue.peek())
+//print(queue.dequeue())
+//queue.enqueue(item: 1)
+//print(queue)
+//for item in queue {
+//  print(item)
+//}

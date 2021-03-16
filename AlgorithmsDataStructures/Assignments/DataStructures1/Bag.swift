@@ -7,15 +7,6 @@
 
 import Foundation
 
-
-/// The **Bag** class represents a bag of generic items.
-/// It supports insertion and iterating over the items in arbitrary order
-///
-///
-
-// when I'm care about add and don't care about remove,
-// then it's good time to use Bag structure
-
 public final class Bag<E> : Sequence  {
   
   private var first: Node<E>? = nil

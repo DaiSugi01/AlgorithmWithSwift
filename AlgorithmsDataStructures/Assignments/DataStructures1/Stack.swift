@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class Stack<E> {
+public final class Stack<E>: Sequence {
   
   private(set) var count: Int = 0
   private var first: Node<E>? = nil
@@ -25,83 +25,63 @@ public final class Stack<E> {
   }
     
   public func push(item: E) {
-    if let first = first {
-      
-      var prevNode = first
-      var current = first.next
-      
-      while current != nil {
-        prevNode = current!
-        current = current?.next
-      }
-      prevNode.next = Node(item: item, next: nil)
-    } else {
+    if first == nil {
       first = Node(item: item, next: nil)
+      return
     }
+    
+    let newItem = Node(item: item, next: nil)
+    let temp = first
+    first = newItem
+    newItem.next = temp
     count += 1
   }
   
   public func pop() -> E? {
     guard let firstNode = first else { return nil }
     
-    var prevNode = firstNode
-    var current = prevNode.next
-
-    if current == nil {
-      let popedItem = firstNode.item
-      first = nil
-      count -= 1
-      return popedItem
-    }
-    
-    while current?.next != nil {
-      prevNode = current!
-      current = current?.next
-    }
-    
-    prevNode.next = nil
+    let poppedNode = firstNode.item
+    first = firstNode.next
     count -= 1
-    return current!.item
+    return poppedNode
   }
   
   public func peek() -> E? {
     guard let firstNode = first else { return nil }
     
-    var prevNode = firstNode
-    var current = prevNode.next
-
-    if current == nil {
-      let popedItem = firstNode.item
-      first = nil
-      count -= 1
-      return popedItem
-    }
-    
-    while current?.next != nil {
-      prevNode = current!
-      current = current?.next
-    }
-    
-    return current!.item
+    return firstNode.item
   }
 
   public func isEmpty() -> Bool {
     return count == 0
   }
 
-//  public struct StackIterator<E>: IteratorProtocol {
-//    public
-//    public func next() -> Element? {
-//    }
-//  }
+  public struct StackIterator<E>: IteratorProtocol {
+    public typealias Element = E
+    private var current: Node<E>?
+    
+    fileprivate init(_ first: Node<E>?) {
+      self.current = first
+    }
+    
+    public mutating func next() -> E? {
+      if let item = current?.item {
+        current = current?.next
+        
+        return item
+      }
+      
+      return nil
+    }
+  }
+  
+  public func makeIterator() -> StackIterator<E> {
+    return StackIterator<E>(first)
+  }
 }
 
-//extension Stack: IteratorProtocol {
-//  public typealias Element = E
-//  public func next() -> E? {
-//    return nil
-//  }
-//
-//  public func makeIterator() -> Stack<E> {
-//  }
-//}
+extension Stack: CustomStringConvertible {
+  public var description: String {
+    return self.reduce(into: "") { $0 += "\($1), " }
+  }
+}
