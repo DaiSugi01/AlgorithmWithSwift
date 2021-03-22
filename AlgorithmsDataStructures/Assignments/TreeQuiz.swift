@@ -36,35 +36,18 @@ func findParent() {
 
 
 func diameter() {
-//  let nodeInfo = [
-//    [ [3, 2] ],
-//    [ [4, 4] ],
-//    [ [1, 2], [4, 3] ],
-//    [ [2, 4], [3, 3], [5, 6] ],
-//    [ [4, 6] ]
-//  ]
-  
-  let nodeInfo = [
-    [ [3, 2] ],
-    [ [4, 4] ],
-    [ [1, 2], [4, 3], [6 ,2] ],
-    [ [2, 4], [3, 3], [5, 6] ],
-    [ [4, 6] ],
-    [ [3, 2], [7, 4] ],
-    [ [6, 4], [8, 5] ],
-    [ [7, 5] ]
-  ]
+  let nodeInfo = getUserInput()
 
   var maxDistance = 0
   var visited: [Int] = []
-  
+
   for (index, eachNode) in nodeInfo.enumerated() {
     visited.append(index + 1)
     let distance = diameterHelper(node: eachNode, nodeInfo: nodeInfo, visited: &visited)
     visited.removeFirst()
     maxDistance = max(distance, maxDistance)
   }
-  
+
   print(maxDistance)
 }
 
@@ -96,3 +79,21 @@ func diameterHelper(node: [[Int]], nodeInfo: [[[Int]]], visited: inout [Int]) ->
   return maxDistance
 }
 
+private func getUserInput() -> [[[Int]]] {
+  let vConut = Int(readLine()!)!
+  var nodeInfo = [[[Int]]](repeating: [[Int]](), count: vConut)
+  
+  for _ in 0 ..< vConut {
+    let input = readLine()!.split(separator: " ").map { Int($0)! }
+    let v = input[0]
+
+    var j = 1
+    while j < input.count {
+      if input[j] == -1 { break }
+      nodeInfo[v - 1].append([input[j], input[j+1]])
+      j += 2
+    }
+  }
+  
+  return nodeInfo
+}
