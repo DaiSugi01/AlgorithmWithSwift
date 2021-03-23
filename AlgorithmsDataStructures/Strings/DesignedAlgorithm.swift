@@ -96,6 +96,8 @@ func findWord(_ targetWord: String, _ text: String) -> Int {
     if targetWord[j] == text[i] {
       j += 1
     } else {
+//      if j > firstLettersCount && text[i - 1] == targetWord[0] {
+//      }
       if j != firstLettersCount || text[i] != targetWord[0] {
         j = 0
       }
@@ -105,3 +107,6 @@ func findWord(_ targetWord: String, _ text: String) -> Int {
   
   return (j > 0) ? i - j : -1
 }
+
+// aaabaaabab
+// aaabab

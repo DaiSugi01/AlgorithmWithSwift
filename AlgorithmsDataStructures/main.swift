@@ -129,4 +129,13 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //print(findWord("NEEDLE", "INAHAYSTACKNEEDLLINA"))  // -1
 
 //findParent()
-diameter()
+//diameter()
+
+//test1()
+//whosMyParent()
+//print(lowestCommonAncestor()?.val)
+
+//print(findWord("AAABAB", "AAABAAABAB"))
+//print(findWord("AAABAB", "AAABAAAABAB"))
+
+findLca()

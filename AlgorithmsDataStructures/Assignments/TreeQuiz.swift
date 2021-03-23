@@ -51,7 +51,7 @@ func diameter() {
   print(maxDistance)
 }
 
-func diameterHelper(node: [[Int]], nodeInfo: [[[Int]]], visited: inout [Int]) -> Int {
+private func diameterHelper(node: [[Int]], nodeInfo: [[[Int]]], visited: inout [Int]) -> Int {
   var totalDistance: Int = 0
   var maxDistance: Int = 0
     
@@ -96,4 +96,18 @@ private func getUserInput() -> [[[Int]]] {
   }
   
   return nodeInfo
+}
+
+func test1() {
+  let n = Int(readLine()!)!
+  var adj = [[Int]](repeating: [], count: n + 1)
+  for _ in 0 ..< n-1 {
+    let edge = readLine()!.split(separator: " ").map { Int($0)! }
+    let u = edge[0]
+    let v = edge[1]
+    adj[u].append(v)
+    adj[v].append(u)
+  }
+  
+  print(adj)
 }
