@@ -138,4 +138,7 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //print(findWord("AAABAB", "AAABAAABAB"))
 //print(findWord("AAABAB", "AAABAAAABAB"))
 
-findLca()
+//findLca()
+//diameter()
+//cyclicPermutation()
+repeatingSequence()

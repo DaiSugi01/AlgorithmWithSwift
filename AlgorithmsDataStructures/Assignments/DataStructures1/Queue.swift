@@ -28,6 +28,7 @@ public final class Queue<E>: Sequence {
     let newNode = Node(item: item, next: nil)
     if first == nil {
       first = newNode
+      count += 1
       return
     }
    
