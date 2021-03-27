@@ -141,4 +141,11 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //findLca()
 //diameter()
 //cyclicPermutation()
-repeatingSequence()
+//repeatingSequence()
+
+//diameterAnswer()
+sushiRestaurantReviews()
+//adjacencyListBFS()
+//print("*******************")
+//adjacencyListDFS()
+//diameterAnswer()

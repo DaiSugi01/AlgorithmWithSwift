@@ -2,7 +2,7 @@
 //  Town.swift
 //  AlgorithmsDataStructures
 //
-//  Created by 杉原大貴 on 2021/03/24.
+//  Created by Derrick Park on 2021-03-24.
 //
 
 import Foundation
@@ -15,8 +15,11 @@ func town() {
   
   let dx = [0, 0, 1, -1]
   let dy = [1, -1, 0, 0]
-    
+  
   var townMap = [[Int]]()
+  var coloredMap = [[Int]](repeating: [Int](repeating: 0, count: 25), count: 25)
+  var houses = [Int](repeating: 0, count: 25 * 25) // the number of houses for each town (index)
+  
   let n = Int(readLine()!)!
   for _ in 0..<n {
     let row = readLine()!.map { Int(String($0))! }
@@ -34,23 +37,20 @@ func town() {
       let x = sq.x
       let y = sq.y
       for i in 0..<4 {
-        let nextX = x + dx[i]
-        let nextY = y + dy[i]
-        
-        if nextX > 0 && nextX < n && nextY >= 0 && nextY < n {
-          if townMap[nextX][nextY] == 1 && coloredMap[nextX][nextY] == 0 {
-            q.enqueue(item: Square(x: nextX, y: nextY))
-            coloredMap[nextX][nextY] = id
+        let nx = x + dx[i]
+        let ny = y + dy[i]
+        // check the bounds
+        if nx >= 0 && nx < n && ny >= 0 && ny < n {
+          if (townMap[nx][ny] == 1 && coloredMap[nx][ny] == 0) { // check if there's a house
+            q.enqueue(item: Square(x: nx, y: ny))
+            coloredMap[nx][ny] = id
             houses[id] += 1
           }
         }
       }
     }
   }
-
-  var coloredMap = [[Int]](repeating: [Int](repeating: 0, count: 25), count: 25)
-  var houses = [Int](repeating: 0, count: 25 * 25)
-
+  
   var id = 0
   for x in 0..<n {
     for y in 0..<n {
@@ -61,11 +61,10 @@ func town() {
     }
   }
   
-  print(id)
-  
-  houses = Array(houses[1...id])
+  print(id) // the number of towns
+  houses = Array(houses[1...id]) // getting the sub array from index 1 to id
   houses.sort()
-  for house in houses {
-    print(house)
+  for num in houses {
+    print(num) // the number of houses per town
   }
 }

@@ -37,3 +37,14 @@ func adjacencyListDFS() {
   var visited = [Bool](repeating: false, count: n + 1)
   dfs(vertex: 1, adjList: &adjList, visited: &visited)
 }
+
+/**
+ 0 1
+ 0 2
+ 2 3
+ 4 3
+ 6 1
+ 1 5
+ 7 3
+
+ */
