@@ -8,64 +8,8 @@
 import Foundation
 
 func sushiRestaurantReviews() {
-  
-  func bfs(node: Int,
-           adjList: [[Int]],
-           direction: inout [Int],
-           visited: inout [Bool],
-           removedTargets: Set<Int>) {
-    let queue = Queue<Int>()
-    queue.enqueue(item: node)
     
-    while !queue.isEmpty() {
-      let v = queue.dequeue()!
-      for edge in adjList[v] {
-        
-        // if already visited, continue loop
-        if visited[edge] { continue }
-
-        // if the edge is a removed Target, continue loop
-        if removedTargets.contains(edge) {
-          visited[edge] = true
-          continue
-        }
-        
-        direction[edge] = direction[v] + 1
-        queue.enqueue(item: edge)
-        visited[edge] = true
-      }
-    }
-  }
-  
-  func dfs(vertex: Int,
-           adjList: [[Int]],
-           visited: inout [Bool],
-           removedTargets: inout Set<Int>,
-           realSushis: [Int]) {
-    
-    visited[vertex] = true
-    var linkedVertexCount = 0
-    
-    for v in adjList[vertex] {
-      if visited[v] {
-        linkedVertexCount += 1
-        continue
-      }
-      dfs(vertex: v, adjList: adjList, visited: &visited, removedTargets: &removedTargets, realSushis: realSushis)
-    }
-    
-    // Add vertex to removedTarget when the last node is not real sushi restaurant
-    if !realSushis.contains(vertex) && linkedVertexCount == adjList[vertex].count {
-      removedTargets.insert(vertex)
-    }
-    
-    // Add vertex to removedTarget when there is no neccesary child node
-    let removedCount = adjList[vertex].filter { removedTargets.contains($0) }.count
-    if !realSushis.contains(vertex) && adjList[vertex].count - removedCount == 1 {
-      removedTargets.insert(vertex)
-    }
-  }
-  
+  // 0. get user input
   let input = readLine()!.split(separator: " ").map { Int($0)! }
   let n = input[0]
   let realSushis = readLine()!.split(separator: " ").map { Int($0)! }
@@ -104,8 +48,64 @@ func sushiRestaurantReviews() {
     
   bfs(node: start, adjList: adjList, direction: &direction2, visited: &visitedForBFS2, removedTargets: removedTargets)
   let diameter = direction2.max()!
+  let edgeCount = direction2.count - removedTargets.count - 1
+  // print out the output which is "(the number of edge) * 2 - diameter"
+  print("The Distance: \(edgeCount * 2 - diameter)")
+}
+
+private func bfs(node: Int,
+         adjList: [[Int]],
+         direction: inout [Int],
+         visited: inout [Bool],
+         removedTargets: Set<Int>) {
+  let queue = Queue<Int>()
+  queue.enqueue(item: node)
   
-  // print out the output which is "(the number of nodes - 1) * 2 - diameter"
-  print("The Distance: \((direction2.count - removedTargets.count - 1) * 2 - diameter)")
+  while !queue.isEmpty() {
+    let v = queue.dequeue()!
+    for edge in adjList[v] {
+      
+      // if already visited, continue loop
+      if visited[edge] { continue }
+
+      // if the edge is a removed Target, continue loop
+      if removedTargets.contains(edge) {
+        visited[edge] = true
+        continue
+      }
+      
+      direction[edge] = direction[v] + 1
+      queue.enqueue(item: edge)
+      visited[edge] = true
+    }
+  }
+}
+
+private func dfs(vertex: Int,
+         adjList: [[Int]],
+         visited: inout [Bool],
+         removedTargets: inout Set<Int>,
+         realSushis: [Int]) {
   
+  visited[vertex] = true
+  var linkedVertexCount = 0
+  
+  for v in adjList[vertex] {
+    if visited[v] {
+      linkedVertexCount += 1
+      continue
+    }
+    dfs(vertex: v, adjList: adjList, visited: &visited, removedTargets: &removedTargets, realSushis: realSushis)
+  }
+  
+  // Add vertex to removedTarget when the last node is not real sushi restaurant
+  if !realSushis.contains(vertex) && linkedVertexCount == adjList[vertex].count {
+    removedTargets.insert(vertex)
+  }
+  
+  // Add vertex to removedTarget when there is no neccesary child node
+  let removedCount = adjList[vertex].filter { removedTargets.contains($0) }.count
+  if !realSushis.contains(vertex) && adjList[vertex].count - removedCount == 1 {
+    removedTargets.insert(vertex)
+  }
 }
