@@ -16,11 +16,14 @@ func town() {
   let dx = [0, 0, 1, -1]
   let dy = [1, -1, 0, 0]
   
-  var townMap = [[Int]]()
-  var coloredMap = [[Int]](repeating: [Int](repeating: 0, count: 25), count: 25)
-  var houses = [Int](repeating: 0, count: 25 * 25) // the number of houses for each town (index)
-  
   let n = Int(readLine()!)!
+  var townMap = [[Int]]()
+  var coloredMap = [[Int]](repeating: [Int](repeating: 0, count: n), count: n)
+  var houses = [Int](repeating: 0, count: n * n) // the number of houses for each town (index)
+//  var townMap = [[Int]]()
+//  var coloredMap = [[Int]](repeating: [Int](repeating: 0, count: 25), count: 25)
+//  var houses = [Int](repeating: 0, count: 25 * 25) // the number of houses for each town (index)
+  
   for _ in 0..<n {
     let row = readLine()!.map { Int(String($0))! }
     townMap.append(row)
@@ -39,6 +42,7 @@ func town() {
       for i in 0..<4 {
         let nx = x + dx[i]
         let ny = y + dy[i]
+        
         // check the bounds
         if nx >= 0 && nx < n && ny >= 0 && ny < n {
           if (townMap[nx][ny] == 1 && coloredMap[nx][ny] == 0) { // check if there's a house

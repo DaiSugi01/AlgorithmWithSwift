@@ -8,7 +8,6 @@
 import Foundation
 
 func sushiRestaurantReviews() {
-    
   // 0. get user input
   let input = readLine()!.split(separator: " ").map { Int($0)! }
   let n = input[0]
@@ -35,6 +34,7 @@ func sushiRestaurantReviews() {
   visitedForBFS[start] = true
   
   bfs(node: start, adjList: adjList, direction: &direction, visited: &visitedForBFS, removedTargets: removedTargets)
+  print(direction)
   for i in 1..<n {
     if direction[i] > direction[start] {
       start = i
@@ -49,6 +49,7 @@ func sushiRestaurantReviews() {
   bfs(node: start, adjList: adjList, direction: &direction2, visited: &visitedForBFS2, removedTargets: removedTargets)
   let diameter = direction2.max()!
   let edgeCount = direction2.count - removedTargets.count - 1
+  
   // print out the output which is "(the number of edge) * 2 - diameter"
   print("The Distance: \(edgeCount * 2 - diameter)")
 }

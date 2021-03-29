@@ -144,8 +144,21 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //repeatingSequence()
 
 //diameterAnswer()
-sushiRestaurantReviews()
+//sushiRestaurantReviews()
 //adjacencyListBFS()
 //print("*******************")
 //adjacencyListDFS()
 //diameterAnswer()
+/*
+7
+0110100
+0110101
+1110101
+0000111
+0100000
+0111110
+0111000
+*/
+//town()
+
+tomatoFarm()
