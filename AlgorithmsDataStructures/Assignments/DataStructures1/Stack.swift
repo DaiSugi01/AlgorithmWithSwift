@@ -27,6 +27,7 @@ public final class Stack<E>: Sequence {
   public func push(item: E) {
     if first == nil {
       first = Node(item: item, next: nil)
+      count += 1
       return
     }
     
