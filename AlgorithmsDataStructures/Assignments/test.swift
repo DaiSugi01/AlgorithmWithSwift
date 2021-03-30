@@ -7,7 +7,7 @@
 
 import Foundation
 
-func sushiRestaurantReviews(testMode: Bool = false, fileNameForInput: String = "") {
+func sushiRestaurantReviewsTest(testMode: Bool = false, fileNameForInput: String = "") {
 
   // 0. get input
   var n = 0
@@ -98,7 +98,6 @@ func sushiRestaurantReviews(testMode: Bool = false, fileNameForInput: String = "
   } else {
     print("The Distance: \(distance)")
   }
-  
 }
 
 private func bfs(node: Int,
