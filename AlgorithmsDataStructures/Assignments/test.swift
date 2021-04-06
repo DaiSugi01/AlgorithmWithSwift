@@ -55,10 +55,9 @@ func sushiRestaurantReviewsTest(testMode: Bool = false, fileNameForInput: String
   let startTime = Date()
   
   // 1. find the unneccesary leaves
-  var start = realSushis.sorted()[0]
-  var visited = [Bool](repeating: false, count: n)
+  var start = realSushis.min()!
   var removedTargets = Set<Int>()
-  dfs(vertex: start, adjList: adjList, visited: &visited, removedTargets: &removedTargets, realSushis: realSushis)
+  dfs(vertex: start, adjList: adjList, removedTargets: &removedTargets, realSushis: realSushis)
   
   // 2. find the deepest node to get a dimeter of tree
   var direction = [Int](repeating: 0, count: n)
@@ -98,6 +97,7 @@ func sushiRestaurantReviewsTest(testMode: Bool = false, fileNameForInput: String
   } else {
     print("The Distance: \(distance)")
   }
+  
 }
 
 private func bfs(node: Int,
@@ -130,29 +130,38 @@ private func bfs(node: Int,
 
 private func dfs(vertex: Int,
          adjList: [[Int]],
-         visited: inout [Bool],
          removedTargets: inout Set<Int>,
          realSushis: [Int]) {
   
+  var visited = [Bool](repeating: false, count: adjList.count)
   visited[vertex] = true
   var linkedVertexCount = 0
   
-  for v in adjList[vertex] {
-    if visited[v] {
-      linkedVertexCount += 1
-      continue
+  let stack = Stack<Int>()
+  stack.push(item: vertex)
+  
+  while !stack.isEmpty() {
+    let pop = stack.pop()!
+    for v in adjList[pop] {
+      if visited[v] {
+        linkedVertexCount += 1
+        continue
+      }
+      
+      visited[v] = true
+      stack.push(item: v)
     }
-    dfs(vertex: v, adjList: adjList, visited: &visited, removedTargets: &removedTargets, realSushis: realSushis)
-  }
-  
-  // Add vertex to removedTarget when the last node is not real sushi restaurant
-  if !realSushis.contains(vertex) && linkedVertexCount == adjList[vertex].count {
-    removedTargets.insert(vertex)
-  }
-  
-  // Add vertex to removedTarget when there is no neccesary child node
-  let removedCount = adjList[vertex].filter { removedTargets.contains($0) }.count
-  if !realSushis.contains(vertex) && adjList[vertex].count - removedCount == 1 {
-    removedTargets.insert(vertex)
+    
+    // Add vertex to removedTarget when the last node is not real sushi restaurant
+    if !realSushis.contains(pop) && linkedVertexCount == adjList[pop].count {
+      removedTargets.insert(pop)
+    }
+    
+    // Add vertex to removedTarget when there is no neccesary child node
+    let removedCount = adjList[pop].filter { removedTargets.contains($0) }.count
+    if !realSushis.contains(pop) && adjList[pop].count - removedCount == 1 {
+      removedTargets.insert(pop)
+    }
+
   }
 }

@@ -55,7 +55,7 @@ func sushiRestaurantReviews(testMode: Bool = false, fileNameForInput: String = "
   let startTime = Date()
   
   // 1. find the unneccesary leaves
-  var start = realSushis.sorted()[0]
+  var start = realSushis.min()!
   var visited = [Bool](repeating: false, count: n)
   var removedTargets = Set<Int>()
   dfs(vertex: start, adjList: adjList, visited: &visited, removedTargets: &removedTargets, realSushis: realSushis)

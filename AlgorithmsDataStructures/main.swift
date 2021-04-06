@@ -163,8 +163,34 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 
 //tomatoFarm()
 //bridges()
-for i in 1..<26 {
-  let fileName = "sushi." + "\(i)" + ".in"
-  sushiRestaurantReviews(testMode: true, fileNameForInput: fileName)
-}
+//for i in 1..<26 {
+//  let fileName = "sushi." + "\(i)" + ".in"
+//  sushiRestaurantReviewsTest(testMode: true, fileNameForInput: fileName)
+//}
 //sushiRestaurantReviewsTest()
+//for i in 1..<26 {
+//  let fileName = "sushi." + "\(i)" + ".in"
+//  let filePathForInput = "/Users/DKS/projects/Cornerstone/4_Swift/401/AlgorithmsDataStructures/AlgorithmsDataStructures/Assignments/testcase/sushiReview/" + fileName
+//  sushi(filePathForInput: filePathForInput)
+//  sushiRestaurantReviewsTest(testMode: true, fileNameForInput: fileName)
+//}
+//sushi()
+
+
+
+//let nForTriangle = 5
+//let aForTriangle = [2, 3, 4, 5, 10]
+////canMakeTriangle(n: nForTriangle, a: aForTriangle)
+//
+//let LForAnt = 10
+//let nForAnt = 3
+//let xForAnt = [2, 6, 7]
+//ant(L: LForAnt, n: nForAnt, x: xForAnt)
+
+//lakeCounting()
+
+//print(canFinish(2, [[1,0]]))
+//print(canFinish(2, [[1,0], [0, 1]]))
+//print(findOrder(4, [[1, 0], [2, 0], [3, 1], [3, 2]]))
+//print(findOrder(2, [[0, 1]]))
+//print(findOrder(2, [[1,0], [0, 1]]))
