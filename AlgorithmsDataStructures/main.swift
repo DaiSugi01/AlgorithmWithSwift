@@ -194,3 +194,17 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //print(findOrder(4, [[1, 0], [2, 0], [3, 1], [3, 2]]))
 //print(findOrder(2, [[0, 1]]))
 //print(findOrder(2, [[1,0], [0, 1]]))
+
+//lcaLinear()
+
+
+var uf = UF(10)
+uf.union(4, 3)
+uf.union(3, 8)
+uf.union(6, 5)
+uf.union(9, 4)
+uf.union(2, 1)
+uf.union(5, 0)
+uf.union(7, 2)
+uf.union(6, 1)
+uf.union(7, 3)

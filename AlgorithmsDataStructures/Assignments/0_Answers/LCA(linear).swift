@@ -39,7 +39,7 @@ func lcaLinear() {
       }
     }
   }
-  
+
   var m = Int(readLine()!)!
   while m > 0 {
     // LCA algorithm O(n)
@@ -49,6 +49,7 @@ func lcaLinear() {
     if depth[n1] < depth[n2] {
       swap(&n1, &n2)
     }
+
     // consider n1 being the deeper node
     while depth[n1] != depth[n2] {
       n1 = parent[n1]
