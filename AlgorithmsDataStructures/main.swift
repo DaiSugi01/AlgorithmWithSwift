@@ -196,7 +196,7 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //print(findOrder(2, [[1,0], [0, 1]]))
 
 //lcaLinear()
-g
+
 
 var uf = UF(10)
 uf.union(4, 3)

@@ -59,6 +59,7 @@ public struct UF {
   ///   - q: the other element
   /// - Returns: `true` if `p` and `q` are in the same set; `false` otherwise
   public mutating func connected(_ p: Int, _ q: Int) -> Bool {
+    
     return findRoot(of: p) == findRoot(of: q)
   }
   
@@ -68,17 +69,14 @@ public struct UF {
   ///   - p: one element
   ///   - q: the other element
   public mutating func union(_ p: Int, _ q: Int) {
-    let i = findRoot(of: p)
-    let j = findRoot(of: q)
+    var i = findRoot(of: p)
+    var j = findRoot(of: q)
     
     if i == j { return }
 
-    if size[i] < size[j] {
-      parent[i] = j
-      size[j] += size[i]
-    } else {
-      parent[j] = i
-      size[i] += size[j]
-    }
+    if size[i] >= size[j] { swap(&i, &j) }
+    
+    parent[i] = j
+    size[j] += size[i]
   }
 }
