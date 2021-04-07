@@ -80,8 +80,5 @@ public struct UF {
       parent[j] = i
       size[i] += size[j]
     }
-
-    print(parent)
   }
 }
-// [6, 2, 6, 4, 6, 6, 6, 6, 4, 4]
