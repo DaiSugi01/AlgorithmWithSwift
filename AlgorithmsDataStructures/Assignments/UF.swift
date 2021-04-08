@@ -68,15 +68,18 @@ public struct UF {
   /// - Parameters:
   ///   - p: one element
   ///   - q: the other element
-  public mutating func union(_ p: Int, _ q: Int) {
+  @discardableResult
+  public mutating func union(_ p: Int, _ q: Int) -> Bool {
     var i = findRoot(of: p)
     var j = findRoot(of: q)
     
-    if i == j { return }
+    if i == j { return false }
 
     if size[i] >= size[j] { swap(&i, &j) }
     
     parent[i] = j
     size[j] += size[i]
+    
+    return true
   }
 }

@@ -198,16 +198,10 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //lcaLinear()
 
 
-var uf = UF(10)
-uf.union(4, 3)
-uf.union(3, 8)
-uf.union(6, 5)
-uf.union(9, 4)
-uf.union(2, 1)
-uf.union(5, 0)
-uf.union(7, 2)
-uf.union(6, 1)
-//uf.union(7, 3)
+//var uf = UF(4)
+//uf.union(1, 2)
+//uf.union(1, 3)
+//uf.union(2, 3)
 
-print(uf.connected(4, 3))
-print(uf.connected(4, 0))
+//print(findCircleNum([[1,1,0],[1,1,0],[0,0,1]]))
+print(findRedundantConnection([[1,2],[1,3],[2,3]]))

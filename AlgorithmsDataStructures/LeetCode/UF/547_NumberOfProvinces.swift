@@ -14,34 +14,20 @@ import Foundation
 // You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city
 // and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
 // LeetCode: https://leetcode.com/problems/number-of-provinces/
+// input: [[1,1,0],[1,1,0],[0,0,1]]
+// output: 2
 func findCircleNum(_ isConnected: [[Int]]) -> Int {
-  
-  var visited = [Bool](repeating: false, count: isConnected.count)
-  
-  var count = 0
-  for i in 0 ..< isConnected.count {
-    if !visited[i] {
-      count += 1
-      findCircleNumHelper(i, isConnected, &visited)
+    
+    var uf = UF(isConnected.count)
+    var count = isConnected.count
+    
+    for i in 0 ..< isConnected.count {
+        for j in 0 ..< isConnected.count {
+            if isConnected[i][j] == 1 && uf.union(i, j) {
+                count -= 1
+            }
+        }
     }
-  }
   
-  return count
-}
-
-
-func findCircleNumHelper(_ node: Int, _ isConnected: [[Int]], _ visited: inout [Bool]) {
-  
-  let q = Queue<Int>()
-  q.enqueue(item: node)
-  
-  while !q.isEmpty()  {
-    let u = q.dequeue()!
-    visited[u] = true
-    for v in 0 ..< isConnected[u].count {
-      if !visited[v] && isConnected[u][v] == 1 {
-        findCircleNumHelper(v, isConnected, &visited)
-      }
-    }
-  }
+    return count
 }
