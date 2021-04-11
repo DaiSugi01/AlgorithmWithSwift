@@ -204,4 +204,20 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 //uf.union(2, 3)
 
 //print(findCircleNum([[1,1,0],[1,1,0],[0,0,1]]))
-print(findRedundantConnection([[1,2],[1,3],[2,3]]))
+//print(findRedundantConnection([[1,2],[2,3],[1,5],[3,4],[1,4]]))
+//print(longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
+//print(findCenter([[1,2],[2,3],[4,2]]))
+//allPathsSourceTarget([[4,3,1],[3,2,4],[3],[4],[]])
+//print(allPathsSourceTarget([[2],[2],[]]))
+//print(allPathsSourceTarget([[4,3,1],[3,2,4],[],[4],[]]))
+
+//print(findSmallestSetOfVertices(5, [[0,1],[2,1],[3,1],[1,4],[2,4]]))
+
+//print(twoCitySchedCost([[259,770],[448,54],[926,667],[184,139],[840,118],[577,469]]))
+
+print(leastInterval(["A","A","A","B","B","B"], 2))
+print(leastInterval(["A","A","A","B","B","B"], 2))
+print(leastInterval(["A","A","A","A","B","B","B","B","C","C","C","C","D","D","D","D","E","F"], 4))
+print(leastInterval(["A","A","A","B","B","B", "C","C","C", "D", "D", "E"], 2))
+print(leastInterval(["A","B","A","B"], 2))
+print(leastInterval(["A","A","A","A","A","A","B","C","D","E","F","G"], 2))

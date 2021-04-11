@@ -80,6 +80,7 @@ public struct UF {
     parent[i] = j
     size[j] += size[i]
     
+    print(parent)
     return true
   }
 }

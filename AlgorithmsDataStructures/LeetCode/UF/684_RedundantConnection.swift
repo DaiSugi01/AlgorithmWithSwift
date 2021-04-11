@@ -8,15 +8,18 @@
 import Foundation
 
 func findRedundantConnection(_ edges: [[Int]]) -> [Int] {
-  var uf = UF(edges.count)
+  let edgeCount = edges.count
+  var uf = UF(edgeCount)
   var ans = [Int](repeating: 0, count: 2)
   
-  for i in 0 ..< edges.count {
-    for edge in edges[i] {
-      if !uf.union(i, edge - 1) {
-        ans[0] = i
-        ans[1] = edge
-      }
+  for i in 0 ..< edgeCount {
+    var first = edges[i][0]
+    var second = edges[i][1]
+    
+    if !uf.union(first - 1, second - 1) {
+      if first > second { swap(&first, &second) }
+      ans[0] = first
+      ans[1] = second
     }
   }
   
