@@ -45,7 +45,7 @@ func minimumCostFlow(testMode: Bool = false, filePath: String = "") {
   // 2. sort edges array by cost in asc
   allEdges.sort {
     if $0.cost == $1.cost {
-      return $0.isValid ? true : false
+      return $0.isValid
     } else {
       return $0.cost < $1.cost
     }
