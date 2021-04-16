@@ -20,7 +20,7 @@ func canCompleteCircuit(_ gas: [Int], _ cost: [Int]) -> Int {
     if tank < 0 {
       res = i + 1
       tank = 0
-    }
+    } 
     i += 1
   }
   

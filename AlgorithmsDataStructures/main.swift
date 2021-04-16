@@ -215,9 +215,32 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 
 //print(twoCitySchedCost([[259,770],[448,54],[926,667],[184,139],[840,118],[577,469]]))
 
-print(leastInterval(["A","A","A","B","B","B"], 2))
-print(leastInterval(["A","A","A","B","B","B"], 2))
-print(leastInterval(["A","A","A","A","B","B","B","B","C","C","C","C","D","D","D","D","E","F"], 4))
-print(leastInterval(["A","A","A","B","B","B", "C","C","C", "D", "D", "E"], 2))
-print(leastInterval(["A","B","A","B"], 2))
-print(leastInterval(["A","A","A","A","A","A","B","C","D","E","F","G"], 2))
+//print(leastInterval(["A","A","A","B","B","B"], 2))
+//print(leastInterval(["A","A","A","B","B","B"], 2))
+//print(leastInterval(["A","A","A","A","B","B","B","B","C","C","C","C","D","D","D","D","E","F"], 4))
+//print(leastInterval(["A","A","A","B","B","B", "C","C","C", "D", "D", "E"], 2))
+//print(leastInterval(["A","B","A","B"], 2))
+//print(leastInterval(["A","A","A","A","A","A","B","C","D","E","F","G"], 2))
+
+//print(canCompleteCircuit([5,1,2,3, 4], [4,4,1,5,1])) // -> 4
+//print(canCompleteCircuit([5,1,2,3,4], [4,4,1,5,1]))
+
+//DijkstraIPQ()
+//DijkstraArray()
+
+//minimumCostFlow()
+
+let N = 3
+let M = 4
+let edges = [(1, 2, 4), (1, 3, 3), (2, 3, -1), (3, 1, -2)] // -> 4 3
+print(bellmanFord(edges, N, M, 1))
+
+//let N = 3
+//let M = 4
+//let edges = [(1, 2, 4), (1, 3, 3), (2, 3, -4), (3, 1, -2)] // -> -1
+//print(bellmanFord(edges, N, M, 1))
+
+//let N = 3
+//let M = 2
+//let edges = [(1, 2, 4), (1, 2, 3)] // -> 3 -1
+//print(bellmanFord(edges, N, M, 1))
