@@ -21,7 +21,7 @@ func minimumCostFlow(testMode: Bool = false, filePath: String = "") {
     pipes = input[1]
     enhancerStrength = input[2]
     
-    graph = [[(CompEdgeA)]](repeating: [CompEdgeA](), count: buildings + 1)
+    graph = [[CompEdgeA]](repeating: [CompEdgeA](), count: buildings + 1)
     for i in 0 ..< pipes {
       let input = readLine()!.split(separator: " ").map { Int($0)! }
       let u = input[0]
