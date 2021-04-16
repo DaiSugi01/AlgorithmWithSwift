@@ -12,7 +12,7 @@ func minimumCostFlow(testMode: Bool = false, filePath: String = "") {
   var enhancerStrength = 0
   var graph =  [[CompEdgeA]]()
 
-  // 0.get an input
+  // 0. get an input
   if testMode {
     (graph, buildings, pipes, enhancerStrength) = getTestInput(from: filePath)
   } else {
