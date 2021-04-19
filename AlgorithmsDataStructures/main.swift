@@ -233,7 +233,7 @@ var arr = [1, 8, 3, 9, 4, 5, 7]
 let N = 3
 let M = 4
 let edges = [(1, 2, 4), (1, 3, 3), (2, 3, -1), (3, 1, -2)] // -> 4 3
-print(bellmanFord(edges, N, M, 1))
+//print(bellmanFord(edges, N, M, 1))
 
 //let N = 3
 //let M = 4
@@ -244,3 +244,16 @@ print(bellmanFord(edges, N, M, 1))
 //let M = 2
 //let edges = [(1, 2, 4), (1, 2, 3)] // -> 3 -1
 //print(bellmanFord(edges, N, M, 1))
+
+
+//print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])) // -> 6
+//print(maxSubArray([5,4,-1,7,8])) // -> 23
+//print(maxSubArray([-2,1])) // -> 1
+//print(maxSubArray([-2,-1])) // -> -1
+
+//print(countVowelStrings(1))
+//print(countVowelStrings(2))
+//print(countVowelStrings(3))
+//print(countVowelStrings(4))
+
+print(matrixBlockSum([[1,2,3],[4,5,6],[7,8,9]], 1))
