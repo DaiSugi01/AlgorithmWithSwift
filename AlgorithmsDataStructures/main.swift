@@ -256,4 +256,22 @@ let edges = [(1, 2, 4), (1, 3, 3), (2, 3, -1), (3, 1, -2)] // -> 4 3
 //print(countVowelStrings(3))
 //print(countVowelStrings(4))
 
-print(matrixBlockSum([[1,2,3],[4,5,6],[7,8,9]], 1))
+//print(matrixBlockSum([[1,2,3],[4,5,6],[7,8,9]], 1))
+
+//makeOne(10)
+//nTiles(4)
+//nTiles2(4)
+//oneTwoThree()
+//nonDecreasingDigits(3)
+//print(lengthOfLIS([10,9,2,5,3,7,101,18]))
+//print(judgeSquareSum(5))
+//print(judgeSquareSum(3))
+//print(judgeSquareSum(4))
+//print(judgeSquareSum(2))
+//print(judgeSquareSum(1))
+
+//SumOfSquareNumbers(10)
+//pokemon()
+print(numDecodings("226"))
+print(numDecodings("0"))
+//print(maxSubArra([-2,1,-3,4,-1,2,1,-5,4]))
